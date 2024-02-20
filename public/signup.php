@@ -5,13 +5,13 @@ if (isset($_POST['submit'])) {
         require_once '../src/DBconnect.php';
         $new_user = array(
             "name" => escape($_POST['name']),
-            "address" => escape($_POST['address']),
-            "email" => escape($_POST['email']),
-            "password" => escape($_POST['password']),
             "age" => escape($_POST['age']),
             "dob" => escape($_POST['dob']),
-            "passportNo" => escape($_POST['passportNo']),
+            "address" => escape($_POST['address']),
+            "email" => escape($_POST['email']),
             "phoneNo" => escape($_POST['phoneNo']),
+            "passportNo" => escape($_POST['passportNo']),
+            "password" => escape($_POST['password'])
         );
         $sql = sprintf(
             "INSERT INTO %s (%s) values (%s)",
@@ -39,26 +39,26 @@ if (isset($_POST['submit']) && $statement){
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
 
-        <label for="address">Address</label>
-        <input type="text" name="address" id="address">
-
-        <label for="email">Email Address</label>
-        <input type="text" name="email" id="email">
-
-        <label for="password">password</label>
-        <input type="text" name="password" id="password">
-
         <label for="age">Age</label>
         <input type="text" name="age" id="age">
 
         <label for="dob">Date of Birth</label>
         <input type="text" name="dob" id="dob">
 
-        <label for="passportNo">Passport Number</label>
-        <input type="text" name="passportNo" id="passportNo">
+        <label for="address">Address</label>
+        <input type="text" name="address" id="address">
+
+        <label for="email">Email Address</label>
+        <input type="text" name="email" id="email">
 
         <label for="phoneNo">Phone Number</label>
         <input type="text" name="phoneNo" id="phoneNo">
+
+        <label for="passportNo">Passport Number</label>
+        <input type="text" name="passportNo" id="passportNo">
+
+        <label for="password">password</label>
+        <input type="text" name="password" id="password">
 
         <input type="submit" name="submit" value="Submit">
     </form>
