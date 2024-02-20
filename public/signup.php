@@ -34,7 +34,7 @@ if (isset($_POST['submit']) && $statement){
 
 
     <h2>Add a user</h2>
-<div id="test">
+<div id="dataForm">
     <form method="post">
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
