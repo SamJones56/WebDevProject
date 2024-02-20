@@ -29,8 +29,9 @@ if (isset($_POST['submit']) && $statement){
 }
 ?>
 
+
     <h2>Add a user</h2>
-<div class = "test">
+<div id="test">
     <form method="post">
         <label for="firstname">First Name</label>
         <input type="text" name="firstname" id="firstname">
