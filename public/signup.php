@@ -23,9 +23,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-
-
-
  include "templates/header.php";
 if (isset($_POST['submit']) && $statement){
     echo $new_user['firstname']. ' successfully added';
@@ -33,6 +30,7 @@ if (isset($_POST['submit']) && $statement){
 ?>
 
     <h2>Add a user</h2>
+<div class = "test">
     <form method="post">
         <label for="firstname">First Name</label>
         <input type="text" name="firstname" id="firstname">
@@ -46,6 +44,7 @@ if (isset($_POST['submit']) && $statement){
         <input type="text" name="location" id="location">
         <input type="submit" name="submit" value="Submit">
     </form>
+</div>
     <a href="index.php">Back to home</a>
 
 <?php include "templates/footer.php"; ?>
