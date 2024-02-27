@@ -23,7 +23,7 @@
             <li class="nav-item"><a href="#" class="nav-link">Stay</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Dine</a></li>
             <li class="nav-item"><a href="#" class="nav-link">Gallery</a></li>
-<!--            <li class="nav-item"><a href="#" class="nav-link">About</a></li>-->
+			 <li class="nav-item"><a href="admin.php" class="nav-link">Admin</a></li>
         </ul>
         <div class="col-md-3 text-end">
             <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
