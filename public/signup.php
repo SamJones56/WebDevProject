@@ -13,6 +13,8 @@ if (isset($_POST['submit'])) {
         "dob" => escape($_POST['dob'])
     );
 
+    addToTable($connection, $new_person, "person");
+
     // Get person_id
     $person_id_array = getForeignKey($connection, "person", "person_id");
     // Extract person_id from the array
@@ -24,21 +26,31 @@ if (isset($_POST['submit'])) {
         "passport_no" => escape($_POST['passport_no'])
     );
 
+    addToTable($connection, $new_customer, "customer");
+    // Get customer_id
+    $customer_id_array = getForeignKey($connection, "customer", "customer_id");
+    // Extract person_id from the array
+    $customer_id = $customer_id_array['MAX(customer_id)'];
+
+
 //        Data for the login table
     $new_login = array(
         "email" => escape($_POST['email']),
         "password" => escape($_POST['password'])
     );
 
-    // Get customer_id
-    $customer_id_array = getForeignKey($connection, "customer", "customer_id");
-    // Extract person_id from the array
-    $customer_id = $customer_id_array['MAX(customer_id)'];
-
+    addToTable($connection, $new_login, "login");
     // Get login_id
     $login_id_array = getForeignKey($connection, "login", "login_id");
     // Extract person_id from the array
     $login_id = $login_id_array['MAX(login_id)'];
+
+//    // Get customer_id
+//    $customer_id_array = getForeignKey($connection, "customer", "customer_id");
+//    // Extract person_id from the array
+//    $customer_id = $customer_id_array['MAX(customer_id)'];
+
+
 
 
 //        Date for the member table
@@ -55,9 +67,6 @@ if (isset($_POST['submit'])) {
 //        );
 //        $statement = $connection->prepare($sql);
 //        $statement->execute($new_user);
-    addToTable($connection, $new_person, "person");
-    addToTable($connection, $new_customer, "customer");
-    addToTable($connection, $new_login, "login");
     addToTable($connection, $new_member, "member");
 
 
