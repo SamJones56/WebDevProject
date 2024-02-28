@@ -17,8 +17,8 @@ makeNewTable();
 
 <div id="dataForm">
     <form method="post">
-        <label for="table_no">Table No</label>
-        <input type="text" name="table_no" id="table_no"><br>
+        <label for="table_id">Table No</label>
+        <input type="text" name="table_id" id="table_id"><br>
 
         <label for="capacity">Capacity</label>
         <input type="text" name="capacity" id="capacity"><br>

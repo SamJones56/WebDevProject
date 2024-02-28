@@ -18,12 +18,12 @@ makeNewRoom();
 
 <div id="dataForm">
     <form method="post">
-        <label for="room_no">Room No</label>
-       <input type="text" name="room_no" id="room_no"><br>
+        <label for="room_id">Room id</label>
+       <input type="text" name="room_id" id="room_id"><br>
        
-       <label for="size">Size</label> 
+       <label for="room_type">Room Type</label>
        <select
-		name="size" id="size">
+		name="room_type" id="room_type">
 		<option value="single">Single</option>
 		<option value="double">Double</option>
 		<option value="twin">Twin</option>
