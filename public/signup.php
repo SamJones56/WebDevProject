@@ -28,9 +28,7 @@ if (isset($_POST['submit'])) {
 
     addToTable($connection, $new_customer, "customer");
     // Get customer_id
-    $customer_id_array = getForeignKey($connection, "customer", "customer_id");
-    // Extract person_id from the array
-    $customer_id = $customer_id_array['MAX(customer_id)'];
+    $customer_id = getForeignKey($connection, "customer", "customer_id");
 
 
 //        Data for the login table
@@ -45,34 +43,13 @@ if (isset($_POST['submit'])) {
     // Extract person_id from the array
     $login_id = $login_id_array['MAX(login_id)'];
 
-//    // Get customer_id
-//    $customer_id_array = getForeignKey($connection, "customer", "customer_id");
-//    // Extract person_id from the array
-//    $customer_id = $customer_id_array['MAX(customer_id)'];
-
-
-
-
 //        Date for the member table
     $new_member = array(
             "customer_id" => $customer_id,
             "login_id" => $login_id
     );
 
-//        $sql = sprintf(
-//            "INSERT INTO %s (%s) values (%s)",
-//            "person",
-//            implode(", ", array_keys($new_user)),
-//            ":" . implode(", :", array_keys($new_user))
-//        );
-//        $statement = $connection->prepare($sql);
-//        $statement->execute($new_user);
     addToTable($connection, $new_member, "member");
-
-
-//    } catch(PDOException $error) {
-//        echo addToTable() . "<br>" . $error->getMessage();
-//    }
 }
 
 include "templates/header.php";

@@ -24,12 +24,8 @@ function getForeignKey($connection, $tableName, $primaryKey){
         $sql = "SELECT MAX(" . $primaryKey . ") FROM " . $tableName;
         $statement = $connection->prepare($sql);
         $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-        if(empty($result) || $result['MAX('.$primaryKey.')'] === null) {
-            $tempArray = array("1");
-            return $tempArray;
-        }
-        print_r($result);
+        $result_array = $statement->fetch(PDO::FETCH_ASSOC);
+        $result = $result_array ["MAX(". $primaryKey .")"];
         return $result;
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
