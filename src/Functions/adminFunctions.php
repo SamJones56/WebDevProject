@@ -15,7 +15,7 @@ function adminPageRedirect(){
                 exit;
             }
             else if ($selectedService == 'table'){
-                header('Location:addTable.php');    
+                header('Location:addResterauntTable.php');
                 
             }
             
