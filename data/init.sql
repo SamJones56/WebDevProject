@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Person` (
 -- Table `HotelTallafornia`.`Departments`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Departments` (
-                                                                `dept_id` INT NOT NULL,
-                                                                `dept_name` VARCHAR(45) NULL,
+    `dept_id` INT NOT NULL,
+    `dept_name` VARCHAR(45) NULL,
     `address` VARCHAR(45) NULL,
     PRIMARY KEY (`dept_id`))
     ENGINE = InnoDB;
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Departments` (
 -- Table `HotelTallafornia`.`Rooms`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Rooms` (
-                                                          `room_id` INT NOT NULL,
-                                                          `room_type` VARCHAR(45) NULL,
+    `room_id` INT NOT NULL,
+    `room_type` VARCHAR(45) NULL,
     `accessibility` VARCHAR(45) NULL,
     `price` DECIMAL(10,2) NULL,
     PRIMARY KEY (`room_id`))
@@ -63,9 +63,9 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Rooms` (
 -- Table `HotelTallafornia`.`RestaurantTables`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`RestaurantTables` (
-                                                                     `table_id` INT NOT NULL,
-                                                                     `capacity` INT NULL,
-                                                                     PRIMARY KEY (`table_id`))
+    `table_id` INT NOT NULL,
+    `capacity` INT NULL,
+     PRIMARY KEY (`table_id`))
     ENGINE = InnoDB;
 
 
@@ -73,10 +73,10 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`RestaurantTables` (
 -- Table `HotelTallafornia`.`Customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Customer` (
-                                                             `person_id` INT NOT NULL,
-                                                             `customer_id` INT NOT NULL AUTO_INCREMENT,
-                                                             `passport_no` INT NULL,
-                                                             PRIMARY KEY (`customer_id`),
+    `person_id` INT NOT NULL,
+    `customer_id` INT NOT NULL AUTO_INCREMENT,
+    `passport_no` INT NULL,
+    PRIMARY KEY (`customer_id`),
     INDEX `fk_Customer_Person1_idx` (`person_id` ASC) VISIBLE,
     CONSTRAINT `fk_Customer_Person1`
     FOREIGN KEY (`person_id`)
@@ -90,8 +90,8 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Customer` (
 -- Table `HotelTallafornia`.`Login`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Login` (
-                                                          `login_id` INT NOT NULL AUTO_INCREMENT,
-                                                          `email` VARCHAR(45) NULL,
+    `login_id` INT NOT NULL AUTO_INCREMENT,
+    `email` VARCHAR(45) NULL,
     `password` VARCHAR(45) NULL,
     PRIMARY KEY (`login_id`))
     ENGINE = InnoDB;
@@ -101,11 +101,11 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Login` (
 -- Table `HotelTallafornia`.`Staff`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Staff` (
-                                                          `staff_id` INT NOT NULL AUTO_INCREMENT,
-                                                          `person_id` INT NOT NULL,
-                                                          `dept_id` INT NOT NULL,
-                                                          `login_id` INT NOT NULL,
-                                                          PRIMARY KEY (`staff_id`, `login_id`),
+    `staff_id` INT NOT NULL AUTO_INCREMENT,
+    `person_id` INT NOT NULL,
+    `dept_id` INT NOT NULL,
+    `login_id` INT NOT NULL,
+    PRIMARY KEY (`staff_id`, `login_id`),
     INDEX `fk_Staff_Person_idx` (`person_id` ASC) VISIBLE,
     INDEX `fk_Staff_Departments1_idx` (`dept_id` ASC) VISIBLE,
     INDEX `fk_Staff_Login1_idx` (`login_id` ASC) VISIBLE,
@@ -131,10 +131,10 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Staff` (
 -- Table `HotelTallafornia`.`Member`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Member` (
-                                                           `member_id` INT NOT NULL AUTO_INCREMENT,
-                                                           `customer_id` INT NOT NULL,
-                                                           `login_id` INT NOT NULL,
-                                                           PRIMARY KEY (`member_id`, `login_id`),
+    `member_id` INT NOT NULL AUTO_INCREMENT,
+    `customer_id` INT NOT NULL,
+    `login_id` INT NOT NULL,
+    PRIMARY KEY (`member_id`, `login_id`),
     INDEX `fk_Member_Customer1_idx` (`customer_id` ASC) VISIBLE,
     INDEX `fk_Member_Login1_idx` (`login_id` ASC) VISIBLE,
     CONSTRAINT `fk_Member_Customer1`
@@ -154,9 +154,9 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Member` (
 -- Table `HotelTallafornia`.`Guest`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Guest` (
-                                                          `guest_id` INT NOT NULL,
-                                                          `customer_id` INT NOT NULL,
-                                                          PRIMARY KEY (`guest_id`),
+    `guest_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+     PRIMARY KEY (`guest_id`),
     INDEX `fk_Guest_Customer1_idx` (`customer_id` ASC) VISIBLE,
     CONSTRAINT `fk_Guest_Customer1`
     FOREIGN KEY (`customer_id`)
@@ -170,11 +170,11 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Guest` (
 -- Table `HotelTallafornia`.`Reservations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Reservations` (
-                                                                 `reservations_id` INT NOT NULL,
-                                                                 `staff_id` INT NOT NULL,
-                                                                 `member_id` INT NOT NULL,
-                                                                 `guest_id` INT NOT NULL,
-                                                                 PRIMARY KEY (`reservations_id`),
+    `reservations_id` INT NOT NULL,
+    `staff_id` INT NOT NULL,
+    `member_id` INT NOT NULL,
+    `guest_id` INT NOT NULL,
+    PRIMARY KEY (`reservations_id`),
     INDEX `fk_Reservations_Staff1_idx` (`staff_id` ASC) VISIBLE,
     INDEX `fk_Reservations_Member1_idx` (`member_id` ASC) VISIBLE,
     INDEX `fk_Reservations_Guest1_idx` (`guest_id` ASC) VISIBLE,
@@ -200,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`Reservations` (
 -- Table `HotelTallafornia`.`RoomReservations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`RoomReservations` (
-                                                                     `reservations_id` INT NOT NULL,
-                                                                     `date` TIMESTAMP(2) NULL,
+    `reservations_id` INT NOT NULL,
+    `date` TIMESTAMP(2) NULL,
     `check_in` DATETIME(2) NULL,
     `check_out` DATETIME(2) NULL,
     `total_price` DECIMAL(10,2) NULL,
@@ -220,8 +220,8 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`RoomReservations` (
 -- Table `HotelTallafornia`.`TableReservations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`TableReservations` (
-                                                                      `reservations_id` INT NOT NULL,
-                                                                      `date` VARCHAR(45) NULL,
+    `reservations_id` INT NOT NULL,
+    `date` VARCHAR(45) NULL,
     `time` VARCHAR(45) NULL,
     `no_guests` VARCHAR(45) NULL,
     PRIMARY KEY (`reservations_id`),
@@ -238,10 +238,10 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`TableReservations` (
 -- Table `HotelTallafornia`.`RoomReservationRecords`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`RoomReservationRecords` (
-                                                                           `reservations_id` INT NOT NULL,
-                                                                           `room_id` INT NOT NULL,
-                                                                           `customer_id` INT NOT NULL,
-                                                                           PRIMARY KEY (`reservations_id`, `room_id`, `customer_id`),
+    `reservations_id` INT NOT NULL,
+    `room_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+    PRIMARY KEY (`reservations_id`, `room_id`, `customer_id`),
     INDEX `fk_RoomReservations_has_Rooms_Rooms1_idx` (`room_id` ASC) VISIBLE,
     INDEX `fk_RoomReservations_has_Rooms_RoomReservations1_idx` (`reservations_id` ASC) VISIBLE,
     INDEX `fk_RoomReservationRecords_Customer1_idx` (`customer_id` ASC) VISIBLE,
@@ -267,10 +267,10 @@ CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`RoomReservationRecords` (
 -- Table `HotelTallafornia`.`TableReservationRecords`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HotelTallafornia`.`TableReservationRecords` (
-                                                                            `table_id` INT NOT NULL,
-                                                                            `reservations_id` INT NOT NULL,
-                                                                            `customer_id` INT NOT NULL,
-                                                                            PRIMARY KEY (`table_id`, `reservations_id`, `customer_id`),
+    `table_id` INT NOT NULL,
+     `reservations_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+    PRIMARY KEY (`table_id`, `reservations_id`, `customer_id`),
     INDEX `fk_RestaurantTables_has_TableReservations_TableReservations_idx` (`reservations_id` ASC) VISIBLE,
     INDEX `fk_RestaurantTables_has_TableReservations_RestaurantTables1_idx` (`table_id` ASC) VISIBLE,
     INDEX `fk_TableReservationRecords_Customer1_idx` (`customer_id` ASC) VISIBLE,
@@ -297,8 +297,8 @@ USE `hoteltallafornia` ;
 -- Table `hoteltallafornia`.`person`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`person` (
-                                                           `person_id` INT NOT NULL,
-                                                           `name` VARCHAR(45) NULL DEFAULT NULL,
+    `person_id` INT NOT NULL,
+    `name` VARCHAR(45) NULL DEFAULT NULL,
     `address` VARCHAR(45) NULL DEFAULT NULL,
     `ph_no` VARCHAR(45) NULL DEFAULT NULL,
     PRIMARY KEY (`person_id`))
@@ -310,9 +310,9 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`person` (
 -- Table `hoteltallafornia`.`customer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`customer` (
-                                                             `person_id` INT NOT NULL,
-                                                             `customer_id` INT NOT NULL,
-                                                             PRIMARY KEY (`customer_id`),
+    `person_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+    PRIMARY KEY (`customer_id`),
     INDEX `fk_Customer_Person1_idx` (`person_id` ASC) VISIBLE,
     CONSTRAINT `fk_Customer_Person1`
     FOREIGN KEY (`person_id`)
@@ -325,8 +325,8 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`customer` (
 -- Table `hoteltallafornia`.`departments`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`departments` (
-                                                                `dept_id` INT NOT NULL,
-                                                                `dept_name` VARCHAR(45) NULL DEFAULT NULL,
+    `dept_id` INT NOT NULL,
+    `dept_name` VARCHAR(45) NULL DEFAULT NULL,
     `address` VARCHAR(45) NULL DEFAULT NULL,
     PRIMARY KEY (`dept_id`))
     ENGINE = InnoDB
@@ -337,9 +337,9 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`departments` (
 -- Table `hoteltallafornia`.`guest`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`guest` (
-                                                          `guest_id` INT NOT NULL,
-                                                          `customer_id` INT NOT NULL,
-                                                          PRIMARY KEY (`guest_id`),
+    `guest_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+    PRIMARY KEY (`guest_id`),
     INDEX `fk_Guest_Customer1_idx` (`customer_id` ASC) VISIBLE,
     CONSTRAINT `fk_Guest_Customer1`
     FOREIGN KEY (`customer_id`)
@@ -352,8 +352,8 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`guest` (
 -- Table `hoteltallafornia`.`login`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`login` (
-                                                          `login_id` INT NOT NULL,
-                                                          `email` VARCHAR(45) NULL DEFAULT NULL,
+    `login_id` INT NOT NULL,
+    `email` VARCHAR(45) NULL DEFAULT NULL,
     `password` VARCHAR(45) NULL DEFAULT NULL,
     PRIMARY KEY (`login_id`))
     ENGINE = InnoDB
@@ -364,10 +364,10 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`login` (
 -- Table `hoteltallafornia`.`member`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`member` (
-                                                           `member_id` INT NOT NULL,
-                                                           `login_id` INT NOT NULL,
-                                                           `customer_id` INT NOT NULL,
-                                                           PRIMARY KEY (`member_id`),
+    `member_id` INT NOT NULL,
+    `login_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+    PRIMARY KEY (`member_id`),
     INDEX `fk_Member_Credentials1_idx` (`login_id` ASC) VISIBLE,
     INDEX `fk_Member_Customer1_idx` (`customer_id` ASC) VISIBLE,
     CONSTRAINT `fk_Member_Credentials1`
@@ -384,11 +384,11 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`member` (
 -- Table `hoteltallafornia`.`staff`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`staff` (
-                                                          `staff_id` INT NOT NULL,
-                                                          `person_id` INT NOT NULL,
-                                                          `dept_id` INT NOT NULL,
-                                                          `login_id` INT NOT NULL,
-                                                          PRIMARY KEY (`staff_id`),
+    `staff_id` INT NOT NULL,
+    `person_id` INT NOT NULL,
+    `dept_id` INT NOT NULL,
+    `login_id` INT NOT NULL,
+    PRIMARY KEY (`staff_id`),
     INDEX `fk_Staff_Person_idx` (`person_id` ASC) VISIBLE,
     INDEX `fk_Staff_Departments1_idx` (`dept_id` ASC) VISIBLE,
     INDEX `fk_Staff_Credentials1_idx` (`login_id` ASC) VISIBLE,
@@ -409,11 +409,11 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`staff` (
 -- Table `hoteltallafornia`.`reservations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`reservations` (
-                                                                 `reservations_id` INT NOT NULL,
-                                                                 `staff_id` INT NOT NULL,
-                                                                 `member_id` INT NOT NULL,
-                                                                 `guest_id` INT NOT NULL,
-                                                                 PRIMARY KEY (`reservations_id`),
+     `reservations_id` INT NOT NULL,
+    `staff_id` INT NOT NULL,
+    `member_id` INT NOT NULL,
+    `guest_id` INT NOT NULL,
+    PRIMARY KEY (`reservations_id`),
     INDEX `fk_Reservations_Staff1_idx` (`staff_id` ASC) VISIBLE,
     INDEX `fk_Reservations_Member1_idx` (`member_id` ASC) VISIBLE,
     INDEX `fk_Reservations_Guest1_idx` (`guest_id` ASC) VISIBLE,
@@ -434,9 +434,9 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`reservations` (
 -- Table `hoteltallafornia`.`restauranttables`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`restauranttables` (
-                                                                     `table_id` INT NOT NULL,
-                                                                     `capacity` INT NULL DEFAULT NULL,
-                                                                     PRIMARY KEY (`table_id`))
+    `table_id` INT NOT NULL,
+    `capacity` INT NULL DEFAULT NULL,
+    PRIMARY KEY (`table_id`))
     ENGINE = InnoDB
     DEFAULT CHARACTER SET = utf8mb3;
 
@@ -445,8 +445,8 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`restauranttables` (
 -- Table `hoteltallafornia`.`roomreservations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`roomreservations` (
-                                                                     `reservations_id` INT NOT NULL,
-                                                                     `date` TIMESTAMP(2) NULL DEFAULT NULL,
+    `reservations_id` INT NOT NULL,
+    `date` TIMESTAMP(2) NULL DEFAULT NULL,
     `check_in` DATETIME(2) NULL DEFAULT NULL,
     `check_out` DATETIME(2) NULL DEFAULT NULL,
     `total_price` DECIMAL(10,2) NULL DEFAULT NULL,
@@ -464,8 +464,8 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`roomreservations` (
 -- Table `hoteltallafornia`.`rooms`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`rooms` (
-                                                          `room_id` INT NOT NULL,
-                                                          `room_type` VARCHAR(45) NULL DEFAULT NULL,
+    `room_id` INT NOT NULL,
+    `room_type` VARCHAR(45) NULL DEFAULT NULL,
     `accessibility` VARCHAR(45) NULL DEFAULT NULL,
     `price` DECIMAL(10,2) NULL DEFAULT NULL,
     PRIMARY KEY (`room_id`))
@@ -477,10 +477,10 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`rooms` (
 -- Table `hoteltallafornia`.`roomreservationrecords`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`roomreservationrecords` (
-                                                                           `reservations_id` INT NOT NULL,
-                                                                           `room_id` INT NOT NULL,
-                                                                           `customer_id` INT NOT NULL,
-                                                                           PRIMARY KEY (`reservations_id`, `room_id`, `customer_id`),
+    `reservations_id` INT NOT NULL,
+    `room_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+     PRIMARY KEY (`reservations_id`, `room_id`, `customer_id`),
     INDEX `fk_RoomReservations_has_Rooms_Rooms1_idx` (`room_id` ASC) VISIBLE,
     INDEX `fk_RoomReservations_has_Rooms_RoomReservations1_idx` (`reservations_id` ASC) VISIBLE,
     INDEX `fk_RoomReservationRecords_Customer1_idx` (`customer_id` ASC) VISIBLE,
@@ -501,8 +501,8 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`roomreservationrecords` (
 -- Table `hoteltallafornia`.`tablereservations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`tablereservations` (
-                                                                      `reservations_id` INT NOT NULL,
-                                                                      `date` VARCHAR(45) NULL DEFAULT NULL,
+    `reservations_id` INT NOT NULL,
+    `date` VARCHAR(45) NULL DEFAULT NULL,
     `time` VARCHAR(45) NULL DEFAULT NULL,
     `no_guests` VARCHAR(45) NULL DEFAULT NULL,
     PRIMARY KEY (`reservations_id`),
@@ -518,10 +518,10 @@ CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`tablereservations` (
 -- Table `hoteltallafornia`.`tablereservationrecords`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `hoteltallafornia`.`tablereservationrecords` (
-                                                                            `table_id` INT NOT NULL,
-                                                                            `reservations_id` INT NOT NULL,
-                                                                            `customer_id` INT NOT NULL,
-                                                                            PRIMARY KEY (`table_id`, `reservations_id`, `customer_id`),
+     `table_id` INT NOT NULL,
+    `reservations_id` INT NOT NULL,
+    `customer_id` INT NOT NULL,
+    PRIMARY KEY (`table_id`, `reservations_id`, `customer_id`),
     INDEX `fk_RestaurantTables_has_TableReservations_TableReservations_idx` (`reservations_id` ASC) VISIBLE,
     INDEX `fk_RestaurantTables_has_TableReservations_RestaurantTables1_idx` (`table_id` ASC) VISIBLE,
     INDEX `fk_TableReservationRecords_Customer1_idx` (`customer_id` ASC) VISIBLE,
