@@ -21,6 +21,8 @@ function makeNewRoom()
             );
             $statement = $connection->prepare($sql);
             $statement->execute($new_table);
+            $room = new Room($_POST['room_id'], $_POST['room_type'], $_POST['accessibility'], $price);
+
         } catch(PDOException $error) {
             echo $sql . "<br>" . $error->getMessage();
         }
