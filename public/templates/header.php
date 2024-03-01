@@ -1,4 +1,6 @@
 <!--source: https://getbootstrap.com/docs/5.3/examples/headers/-->
+<?php session_start(); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,10 +27,19 @@
             <li class="nav-item"><a href="#" class="nav-link">Gallery</a></li>
 			 <li class="nav-item"><a href="admin.php" class="nav-link">Admin</a></li>
         </ul>
+<!--        Begin checks for logged in                  -->
+        <?php if($_SESSION['Active'] == false){ ?>
         <div class="col-md-3 text-end">
             <a href="./login.php" class="btn btn-outline-primary me-2">Login</a>
             <a href="./newMember.php"  class="btn btn-primary">Sign-up</a>
         </div>
+        <?php }
+        else if($_SESSION['Active'] == true){ ?>
+        <div class="col-md-3 text-end">
+            <a href="./profile.php" class="btn btn-outline-primary me-2">Profile</a>
+            <a href="./logout.php"  class="btn btn-primary">Log-out</a>
+        </div>
+        <?php }?>
     </header>
 </div>
 
